@@ -1,0 +1,61 @@
+﻿@model EasyEnglish.Models.LoginModel
+
+@{
+    ViewBag.Title = "Log in";
+}
+
+<h1>@ViewBag.Title</h1>
+
+<section id="login_form">
+@using (Html.BeginForm(new {ReturnUrl = ViewBag.ReturnUrl, 
+    @class = "form-horizontal" })) {
+    @Html.AntiForgeryToken()
+    
+    @Html.ValidationSummary(excludePropertyErrors: false)
+    
+    <fieldset>
+        <!--<legend>Log in Form</legend>-->
+        <div class="form-group">
+            @Html.LabelFor(m => m.UserName, new { @class = "control-label", @for = "tbUserName" }):
+            @Html.TextBoxFor(m => m.UserName, new { @id = "tbUserName", @class = "form-control editor_field" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Password, new { @class = "control-label", @for = "tbPassword" }):
+            @Html.PasswordFor(m => m.Password, new { @id = "tbPassword", @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.CheckBoxFor(m => m.RememberMe, new { @id = "cbRememberMe", @class = "checkbox-inline" })
+            @Html.LabelFor(m => m.RememberMe, new { @class = "control-label", @for = "cbRememberMe" })
+        </div>
+
+        <div class="form-group submit_button">
+            <button type="submit" class="btn btn-primary">
+                Log in
+            </button>
+        </div>
+    </fieldset>
+    
+  <p class="register_link">
+        @Html.ActionLink("Register", "Register") if you don't have an account.
+    </p>
+}
+</section>
+
+<!--
+<section class="social" id="socialLoginForm">
+    <h2>Use another service to log in.</h2>
+    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+</section>
+-->
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    
+<script type="text/javascript">
+        $(function() {
+            $("#tbUserName").focus();
+        });
+</script>
+}

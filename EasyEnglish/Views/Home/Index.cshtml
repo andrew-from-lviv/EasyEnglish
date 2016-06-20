@@ -1,0 +1,116 @@
+﻿@using System.Linq
+@model EasyEnglish.ViewModels.HomeViewModel
+
+@{
+    ViewBag.Title = "Home";
+}
+
+@section navigations {
+    <ul class="nav navbar-nav">
+        <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+        <li class="divider_vertical"></li>
+        <li><a href="@Url.Action("Index", "Review")">Review</a></li>
+        <li class="divider_vertical"></li>
+        <li><a href="@Url.Action("About", "Home")">About</a></li>
+        @if (User.IsInRole("Administrator")) {
+            <li class="divider_vertical"></li>
+            <li><a href="@Url.Action("Index", "Function")">Function</a></li>
+        }
+    </ul>
+}
+
+<!-- ItemNum/Create, Search -->
+<div class="row row_top">
+    <div class="col_search">
+        @using (Html.BeginForm("Index", "Home", FormMethod.Get,
+            new { @class = "form-inline" })) {
+            <div class="form-group submit_button">
+                <button type="submit" class="btn btn-primary">
+                    Find
+                </button>
+            </div>
+
+            <div class="form-group text_box">
+                @Html.TextBox("search", null, new { @class = "form-control" })
+            </div>
+        }
+    </div>
+
+    <div class="col_create">
+        <div class="badge item_num">
+            <!--<i class="glyphicon glyphicon-book"></i>-->
+            @Model.ItemNum<br>
+            items
+        </div>
+
+        <div class="create_link">
+            @Html.ActionLink("Add", "Create", null,
+                        new { @class = "btn btn-primary" })
+        </div>
+    </div>
+</div>
+
+<!-- Top Pagenation -->
+<div class="row">
+    <div class="page_position">
+        <span class="badge">[ @(Model.Page + 1) / @(Model.LastPage + 1) ]</span>
+    </div>
+    <div class="page_controller">
+        @Html.Partial("_PagingPartial")
+    </div>
+</div>
+
+<!-- Cards -->
+<div id="home" class="row">
+    @if (Model.ViewCards != null && Model.ViewCards.Any()) {
+        foreach (var c in Model.ViewCards) {
+            <section class="card">
+                <div class="card_left">
+                    <div class="question">
+                        <div class="display_field">@c.Question</div>
+                    </div>
+
+                    <div class="answer">
+                        <div class="display_field">@c.Answer</div>
+                    </div>
+
+                    @if (!string.IsNullOrEmpty(c.Note)) {
+                        var note = Html.Encode(c.Note)
+                            .Replace("\r", "")
+                            .Replace("\n", "<br />")
+                            .Replace("&amp;nbsp;", "&nbsp;");
+                        <div class="note">
+                            <div class="display_field">@Html.Raw(note)</div>
+                        </div>
+                    }
+                </div>
+
+                <div class="card_right">
+                    <div class="created_at">
+                        <div class="display_field">
+                            @c.CreatedAt.ToString("yyyy/MM/dd HH:mm")
+                        </div>
+                    </div>
+
+                    <div>
+                        @Html.ActionLink("Edit", "Edit", new { id = c.Id, page = Model.Page, search = Model.Search },
+                            new { @class = "btn btn-primary btn_edit" })
+
+                        @Html.ActionLink("Del", "Delete", new { id = c.Id, page = Model.Page, search = Model.Search },
+                            new { @class = "btn btn-primary btn_del" })
+                    </div>
+                </div>
+            </section>
+        }
+    }
+</div>
+
+<!-- Bottom Pagenation -->
+<div class="row">
+    <div class="page_controller">
+        @Html.Partial("_PagingPartial")
+    </div>
+    <div class="page_position">
+        <span class="badge">[ @(Model.Page + 1) / @(Model.LastPage + 1) ]</span>
+    </div>
+</div>

@@ -1,0 +1,175 @@
+﻿/*
+* ViSiteMobile.css
+*/
+
+@media (max-width: 767px) {
+    header,
+    footer {
+        border-radius: 0 !important;
+    }
+
+    /* navbar
+    ----------------------------------------------------------*/
+    .navbar .divider_vertical,
+    .dropdown-menu .divider {
+        display: none;
+    }
+
+    .navbar li {
+        border-top: 1px solid silver;
+        background-color: whitesmoke;
+    }
+
+    /* pagination
+    ----------------------------------------------------------*/
+    .pagination li > a {
+        width: 46px;
+    }
+
+    /* Home/Index
+    ----------------------------------------------------------*/
+    .col_create {
+        width: 80px;
+    }
+
+    .col_search {
+        margin-left: -80px;
+        padding-left: 80px;
+    }
+
+    .col_create .item_num {
+        margin-bottom: 5px;
+    }
+
+    .col_create .create_link {
+        clear: both;
+    }
+
+    .card .card_left {
+        float: none;
+        margin: 0;
+        padding: 0;
+    }        
+
+    .card .card_right {
+        overflow: hidden;
+        width: 250px;
+    }
+        .card_right .created_at {
+            float: left;
+            margin-right: 10px;
+        }
+        .card_right .reviewed_at {
+            float: left;
+            margin-right: 10px;
+        }
+
+    .question .display_field {
+        font-size: 24px;
+        letter-spacing: 0.5px;
+    }
+
+    .answer .display_field {
+        font-size: 18px;
+        letter-spacing: 0.5px;
+    }
+
+    .note .display_field {
+        font-size: 16px;
+    }
+
+    /* Review/Index, Answer, Status
+    ----------------------------------------------------------*/
+    #review .card_right {
+        float: left;
+        text-align: left;
+    }
+    #review .created_at {
+        margin-bottom: 10px;
+    }
+    
+    #review .reviewed_at {
+        margin-bottom: 10px;
+    }
+
+    .review_level,
+    .anser_time,
+    .review_mode {
+        float: left;
+        margin-right: 10px;
+    }
+
+    #sbmPerfect {
+        float: left;
+        margin-bottom: 0;
+        margin-right: 40px;
+    }
+
+    #sbmAnswer {
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+    #sbmPerfect,
+    #sbmAlmost {
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    #review .graph {
+        width: 100%;
+        max-width: 560px;
+        height: auto;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 319px) {
+    /* Layout
+    ----------------------------------------------------------*/
+    .main_content {
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-bottom: 10px;
+    }
+
+    /* pagination
+    ----------------------------------------------------------*/
+    .pagination li > a {
+        width: 36px;
+        font-size: 12px;
+        padding: 5px 0;
+    }
+
+    /* Home/Index
+    ----------------------------------------------------------*/
+    .col_create {
+        width: 60px;
+    }
+
+    .col_search {
+        margin-left: -60px;
+        padding-left: 60px;
+    }
+
+    .card .card_right {
+        width: 120px;
+    }
+        .card_right .created_at {
+            float: none;
+            margin-right: 0;
+        }
+
+
+    .btn {
+        padding-top: 4px;
+        height: 30px !important;
+    }
+
+    /* Account/Login, Manage
+    ----------------------------------------------------------*/
+    #login_form .form-control,
+    #register_form .form-control,
+    #change_password_form .form-control {
+        width: 100%;
+    }
+}

@@ -1,0 +1,126 @@
+﻿/* 
+* bootstrap-ex.css 
+*/
+
+body {
+    font-family: "Meiryo, Helvetica Neue", Helvetica, Arial, sans-serif;    
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    margin-top: 1px;
+    margin-right: 1px;
+}
+
+.btn {
+    font-family: Rockwell, Times, "Times New Roman", serif;
+    font-size: 16px;
+    line-height: 1.25em
+}
+
+.navbar-brand {
+    font-size: 22px;
+}
+
+.navbar-nav > li > a {
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.dropdown-menu > li  a {
+    font-size: 16px;
+}
+
+.dropdown-menu .divider {
+    background-color: silver;
+}
+
+.dropdown-menu > li > form > a:hover,
+.dropdown-menu > li > form > a:focus {
+  background-color: #e8e8e8;
+  background-image: -webkit-linear-gradient(top, #f5f5f5 0%, #e8e8e8 100%);
+  background-image:      -o-linear-gradient(top, #f5f5f5 0%, #e8e8e8 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f5f5f5), to(#e8e8e8));
+  background-image:         linear-gradient(to bottom, #f5f5f5 0%, #e8e8e8 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5f5f5', endColorstr='#ffe8e8e8', GradientType=0);
+  background-repeat: repeat-x;
+}
+.dropdown-menu > li > form > a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857143;
+  color: #333;
+  white-space: nowrap;
+}
+.dropdown-menu > li > form > a:hover,
+.dropdown-menu > li > form > a:focus {
+  color: #262626;
+  text-decoration: none;
+  background-color: #f5f5f5;
+}
+
+@media (max-width: 767px) {
+    .container {
+        margin: 0;
+    }
+
+    .navbar-nav .open .dropdown-menu > li > a {
+        line-height: 30px;
+    }
+
+  .navbar-nav .open .dropdown-menu {
+      margin: 0;
+      padding: 0;
+  }
+  .navbar-nav .open .dropdown-menu > li > form > a,
+  .navbar-nav .open .dropdown-menu .dropdown-header {
+    padding: 5px 15px 5px 25px;
+  }
+  .navbar-nav .open .dropdown-menu > li > form > a {
+    line-height: 30px;
+  }
+  .navbar-nav .open .dropdown-menu > li > form > a:hover,
+  .navbar-nav .open .dropdown-menu > li > form > a:focus {
+    background-image: none;
+  }
+
+    .navbar-default .navbar-nav .open .dropdown-menu > li > form > a {
+        color: #777;
+    }
+
+        .navbar-default .navbar-nav .open .dropdown-menu > li > form > a:hover,
+        .navbar-default .navbar-nav .open .dropdown-menu > li > form > a:focus {
+            color: #333;
+            background-color: transparent;
+        }
+
+        .navbar-collapse .navbar-nav {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+}
+
+.pagination {
+    margin: 0;
+}
+
+.row {
+    margin: 0;
+}
+
+.form-horizontal .control-label {
+    padding-top: 5px;
+}
+
+.form-horizontal .form-group {
+    margin: 0;
+}
+
+.field-validation-error,
+.validation-summary-errors {
+    color: darkred;
+    font-size: 16px;
+    font-weight: bold;
+}

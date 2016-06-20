@@ -1,0 +1,555 @@
+﻿/* 
+* ViSite.css 
+*/
+
+/* Util
+----------------------------------------------------------*/
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.clear-both {
+    clear: both;
+}
+
+/* Layout
+----------------------------------------------------------*/
+html{
+    background-color: transparent;
+}
+
+body {
+    background-color: #444;
+    background-image: url("/Images/back.png");
+}
+
+.container {
+    background-color: #f8f8f8;
+    max-width: 1200px;
+}
+
+header, footer {
+    background: -moz-linear-gradient(#e8e8e8 0,silver 100%) !important;
+    background: -webkit-linear-gradient(#e8e8e8 0,silver 100%) !important;
+    background: -ms-linear-gradient(#e8e8e8 0,silver 100%) !important;
+    background-color: silver !important;
+    font-family: Rockwell, Times, "Times New Roman", serif;        
+}
+
+header {
+    margin-top: 20px;
+    border-bottom-right-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+}
+
+footer {
+    margin-bottom: 20px;
+    border-radius: 4px;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.main_content {
+    padding-bottom: 15px;    
+}
+
+footer {
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6, 
+label, .display_label, legend {
+    font-family: Rockwell, Times, "Times New Roman", serif;    
+}
+
+a:focus,
+button:focus {
+    outline: 1px dashed #66afe9 !important;    
+}
+
+.btn-primary:focus,
+.btn-info:focus,
+.btn-success:focus,
+.btn-warning:focus,
+.btn-danger:focus {
+    color: gold;
+    border-color: #66afe9;
+    -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+    box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+}
+
+/* navbar
+----------------------------------------------------------*/
+.navbar {
+    margin-bottom: 0;    
+}
+
+    .navbar a:hover {
+        color: #333 !important;
+    }
+
+    .navbar .divider_vertical {
+        height: 30px;
+        margin: 10px 0;
+        border-left: 1px solid silver;
+        border-right: 1px solid darkgray;
+    }
+
+    .navbar-inverse .divider_vertical {
+        border-right-color: #222222;
+        border-left-color: #111111;
+    }
+
+#userDropDown {
+    cursor: pointer;
+}
+
+/* pagination
+----------------------------------------------------------*/
+.page_position {
+    text-align: center;
+    padding: 2px 0;
+}
+
+    .page_position .badge {
+        background: -moz-linear-gradient(#e8e8e8 0,silver 100%);
+        background: -webkit-linear-gradient(#e8e8e8 0,silver 100%);
+        background: -ms-linear-gradient(#e8e8e8 0,silver 100%);
+        background-color: silver;
+        color: dimgray;
+        font-size: 16px;
+    }
+
+.page_controller {
+    text-align: center;
+    line-height: 0;
+    padding: 5px 0;
+}
+
+.pagination li > a {
+    background: -moz-linear-gradient(#e8e8e8 0,silver 100%);
+    background: -webkit-linear-gradient(#e8e8e8 0,silver 100%);
+    background: -ms-linear-gradient(#e8e8e8 0,silver 100%);
+    background-color: silver;
+    color: dimgray;
+    font-weight: bold;
+    width: 60px;
+}
+    
+    .pagination li > a.first_link,
+    .pagination li > a.last_link {
+        line-height: 1em;
+        font-family: Rockwell, Times, "Times New Roman", serif;
+    }
+
+    .pagination li > a:hover,
+    .pagination li > a:active,
+    .pagination li > a:focus {
+        background: -moz-linear-gradient(#f0f0f0 0,lightgray 100%);
+        background: -webkit-linear-gradient(#f0f0f0 0, lightgray 100%);
+        background: -ms-linear-gradient(#f0f0f0 0, lightgray 100%);
+        background-color: lightgray;
+        color: black;
+    }
+
+    .pagination li.disabled > a,
+    .pagination li.disabled > a:hover,
+    .pagination li.disabled > a:active,
+    .pagination li.disabled > a:focus {
+        outline: none !important;    
+        font-weight: normal;
+        background: none;
+        background-color: whitesmoke;
+        color: silver;
+    }
+
+    .page_position .badge,
+    .pagination li:first-of-type,
+    .pagination li:last-of-type {
+        font-family: Rockwell, Times, "Times New Roman", serif;
+    }
+
+/* form
+----------------------------------------------------------*/
+legend {
+    margin-bottom: 5px;
+}
+
+label,
+.display_label,
+.editor_label {
+    margin: 0;
+    color: black;
+    font-style: normal;
+    font-weight: bold;
+    font-family: Rockwell, Times, "Times New Roman", serif;
+    font-size: 15px;
+}
+
+.display_field {
+    padding: 5px 5px 10px;
+    font-size: 16px;
+}
+
+.editor_field {
+    margin-top: 1px;
+    font-size: 18px;
+}
+
+.char_field {
+    margin-top: 1px;
+    padding: 0;
+    text-align: center;
+    font-size: 18px;
+    width: 32px;
+}
+
+.message_error {
+    color: darkred;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.message_success {
+    color: darkgreen;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+fieldset .submit_button {
+    margin: 20px 0  10px !important;
+}
+
+.back_to {
+    margin: 10px 5px 5px;    
+}
+
+/* Home/Index
+----------------------------------------------------------*/
+.row_top {
+    overflow: hidden;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+.col_create {
+    float: left;
+    width: 140px;
+    overflow: hidden;
+    padding: 0 4px;
+}
+
+    .col_create .item_num {
+        float: left;
+        margin-right: 5px;
+        background: -moz-linear-gradient(#e8e8e8 0,silver 100%);
+        background: -webkit-linear-gradient(#e8e8e8 0,silver 100%);
+        background: -ms-linear-gradient(#e8e8e8 0,silver 100%);
+        background-color: silver;
+        color: dimgray;
+        font-family: Rockwell, Times, "Times New Roman", serif;
+        font-size: 16px;
+    }
+
+    .col_create .create_link {
+        float: left;
+    }
+
+.col_search {
+    float: right;
+    width: 100%;
+    overflow: hidden;
+    margin-left: -140px;
+    padding-left: 140px;
+}
+
+    .col_search .text_box {
+        float: right;
+        width: 60%;
+        max-width: 200px;
+        margin-right: 4px;  
+    }
+
+        .col_search .text_box input {
+            width: 100%;
+        }
+
+    .col_search .submit_button {
+        float: right;
+        width: auto;
+    }
+
+    .col_search .form-group {
+        margin-bottom: 0;
+    }
+
+/* card */
+section.card:nth-of-type(1) {
+    border-top: 1px solid gray;
+}
+
+section.card {
+    overflow: hidden;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+    padding: 5px;
+}
+
+    .card .card_left {
+        float: left;
+        overflow: hidden;
+        width: 100%;
+        padding-right: 120px;
+        margin-right: -120px;
+    }
+
+    .card .card_right {
+        float: right;
+        overflow: hidden;
+        width: 120px;
+        text-align: center;
+    }
+
+.question .display_field {
+    font-size: 26px;
+    color: #f00000;
+    letter-spacing: 1px;
+}
+
+.answer .display_field {
+    font-size: 20px;
+    color: navy;
+    letter-spacing: 1px;
+}
+
+.note .display_field {
+    margin: 5px 5px 10px;
+    padding: 5px;
+    font-size: 18px;
+    background-color: #e8f4e8;
+    border: 1px solid silver;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+
+.created_at,
+.reviewed_at {
+    width: 120px;
+}
+
+.created_at .display_field,
+.reviewed_at .display_field{
+    font-size: 14px;
+    font-style: italic;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.btn_edit,
+.btn_del {
+    width: 50px;    
+}
+
+.btn_edit {
+    margin-right: 10px;
+}
+
+#about {
+    padding-bottom: 30px;
+    min-height: 350px;
+    font-size: 16px;
+}
+
+#about h4 {
+    margin:  15px 2px 2px;
+    padding-left: 6px;
+    border-left: solid 3px gray;
+}
+
+#about h5 {
+    margin:  10px 4px 2px;
+    font-size: 16px;
+}
+
+#about .search {    
+    overflow: visible;
+    max-width: 280px;
+    line-height: 30px;
+    margin-left: 2px;
+    padding-left: 5px;
+    background-color: lightgoldenrodyellow;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+/* Home/Edit
+----------------------------------------------------------*/
+.created_date,
+.created_time,
+.reviewed_date,
+.reviewed_time {
+    float: left;
+    width: 140px;
+    margin-right: 10px !important;
+}
+
+.reviewed_date {
+    clear: both;
+}
+
+.datepicker {}
+
+.created_date .editor_field,
+.reviewed_date .editor_field,
+.created_time .editor_field,
+.reviewed_time .editor_field {
+    width: 100%;
+}
+
+#edit  .review_level {
+    clear: both;
+    float: none;
+}
+
+#ddReviewLevel {
+    width: 140px;
+    text-align: left;
+    padding: 0 0 0 4px;
+    font-size: 15px;
+}
+
+/*#edit .review_level .editor_field {
+    width: 60px;
+}*/
+ 
+/* Review/Index, Answer, Status
+----------------------------------------------------------*/
+.review_icon {
+    margin-bottom: 2px;
+    width: 30px;
+}
+#sbmAnswer,
+#sbmPerfect,
+#sbmAlmost {
+    margin-top: 10px;
+}
+
+#sbmPerfect {
+    margin-bottom: 20px;
+}
+
+.dummy_pagination {
+    height: 70px;
+}
+
+#review .answer .display_field span {
+    font-size: 26px;
+}
+
+.my_answer .display_field {
+    font-size: 24px;
+    color: dimgray;
+    letter-spacing: 1px;    
+}
+
+.my_answer .display_field .perfect {
+    color: darkgreen;
+    font-size: 1em;
+}
+
+.my_answer .display_field .error {
+    color: red;
+    font-size: 1.25em;
+}
+
+.hint {}
+
+#txtHint {
+    display: none;
+    font-size: 20px;
+    color: green;
+    letter-spacing: 1px;
+}
+
+#review .graph {
+    width: 560px;
+    height: auto;
+}
+
+.review_level,
+.answer_time {
+    float: left;
+    width: 120px;
+}
+
+.review_level .badge {
+        background: -moz-linear-gradient(#e8e8e8 0,silver 100%);
+        background: -webkit-linear-gradient(#e8e8e8 0,silver 100%);
+        background: -ms-linear-gradient(#e8e8e8 0,silver 100%);
+        background-color: silver;
+        color: dimgray;
+        font-size: 15px;
+}
+
+.review_mode  {
+    float: left;
+    width: 120px;
+    margin-bottom: 10px;
+}
+.review_mode select {
+    text-align: left;
+    font-size: 15px;
+    padding: 0 0 0 4px;
+}
+
+/* Account/Login, Manage
+----------------------------------------------------------*/
+#login_form .form-control,
+#register_form .form-control,
+#change_password_form .form-control {
+    width: 300px;
+}
+
+.login_user {
+    font-size: 16px;
+}
+.login_user strong {
+    font-size: 24px;
+    color: darkorange;
+}
+
+/* Function
+----------------------------------------------------------*/
+#function {
+    min-height: 350px;
+    font-size: 16px;
+}
+
+#function ul > li > a {
+    font-size: 20px;
+}
+
+#function form {
+    margin-top: 20px;
+    padding: 10px 10px 0;
+    max-width: 560px;
+    border: solid lightgray 1px;
+    overflow: hidden;
+}
+
+    #function form .form-group {
+        margin-bottom: 10px;
+    }
+
+    #function form .file {
+        width: 100%;
+    }

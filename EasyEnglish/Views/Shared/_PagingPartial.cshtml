@@ -1,0 +1,89 @@
+﻿@{
+    string controller = "Home";
+    object firstArgs, prev2Args, prevArgs, nextArgs, next2Args, lastArgs;
+    if (Model.GetType() == typeof(EasyEnglish.ViewModels.ReviewViewModel)) {
+        controller = "Review";
+        firstArgs = new { page = 0, reviewMode = Model.ReviewMode };
+        prev2Args = new { page = Model.Page - Model.PageSkip, reviewMode = Model.ReviewMode };
+        prevArgs = new { page = Model.Page - 1, reviewMode = Model.ReviewMode };
+        nextArgs = new { page = Model.Page + 1, reviewMode = Model.ReviewMode };
+        next2Args = new { page = Model.Page + Model.PageSkip, reviewMode = Model.ReviewMode };
+        lastArgs = new { page = Model.LastPage, reviewMode = Model.ReviewMode };
+    } else {
+        firstArgs = new { page = 0, search = Model.Search };
+        prev2Args = new { page = Model.Page - Model.PageSkip, search = Model.Search };
+        prevArgs = new { page = Model.Page - 1, search = Model.Search };
+        nextArgs = new { page = Model.Page + 1, search = Model.Search };
+        next2Args = new { page = Model.Page + Model.PageSkip, search = Model.Search };
+        lastArgs = new { page = Model.LastPage, search = Model.Search };
+    }
+}
+
+<ul class="pagination">
+    @if (Model.HasPrevPage(1)) {
+        <li>
+            <a href="@Url.Action("Index", controller, firstArgs)">
+                <span class="first_link">First</span>
+            </a>
+        </li>
+
+        if (Model.HasPrevPage(Model.PageSkip)) {
+            <li>
+                <a href="@Url.Action("Index", controller, prev2Args)">&lt;&lt;</a>
+            </li>
+        } else {
+            <li class="disabled">
+                <a href="#" tabindex="-1">&lt;&lt;</a>
+            </li>
+        }
+
+        <li>
+            <a href="@Url.Action("Index", controller, prevArgs)">&lt;</a>
+        </li>
+    } else {
+        <li class="disabled">
+            <a href="#" tabindex="-1"><span class="first_link">First</span></a>
+        </li>
+        <li class="disabled">
+            <a href="#" tabindex="-1">&lt;&lt;</a>
+        </li>
+        <li class="disabled">
+            <a href="#" tabindex="-1">&lt;</a>
+        </li>
+    }
+
+
+    @if (Model.HasNextPage(1)) {
+        <li>
+            <a href="@Url.Action("Index", controller, nextArgs)">&gt;</a>
+        </li>
+
+        if (Model.HasNextPage(Model.PageSkip)) {
+            <li>
+                <a href="@Url.Action("Index", controller, next2Args)">
+                    &gt;&gt;
+                </a>
+            </li>
+        } else {
+            <li class="disabled">
+                <a href="#" tabindex="-1">&gt;&gt;</a>
+            </li>
+        }
+
+        <li>
+            <a href="@Url.Action("Index", controller, lastArgs)">
+                <span class="last_link">Last</span>
+            </a>
+        </li>
+    } else {
+        <li class="disabled">
+            <a href="#" tabindex="-1">&gt;</a>
+        </li>
+        <li class="disabled">
+            <a href="#" tabindex="-1">&gt;&gt;</a>
+        </li>
+        <li class="disabled">
+            <a href="#" tabindex="-1"><span class="last_link">Last</span></a>
+        </li>
+    }
+</ul>

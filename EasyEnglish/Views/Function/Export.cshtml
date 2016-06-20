@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Export";
+}
+
+@section navigations {
+    <ul class="nav navbar-nav">
+        <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+        <li class="divider_vertical"></li>
+        <li><a href="@Url.Action("Index", "Function")">Function</a></li>
+    </ul>
+}
+
+<div id="function">
+    <h2>Export</h2>
+    <p>Click below button to export data to csv file.</p>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <button type="submit" id="sbmExport" class="btn btn-success">
+                Export
+            </button>
+        </div>
+    }
+    
+    <div class="back_to">
+        <a href="@Url.Action("Index", "Function")">Back</a>
+    </div>
+</div>

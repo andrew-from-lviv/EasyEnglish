@@ -1,0 +1,207 @@
+﻿@model EasyEnglish.ViewModels.ReviewViewModel
+
+@{
+    ViewBag.Title = "Review";
+}
+
+@section navigations {
+    <ul class="nav navbar-nav">
+        <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+        <li class="divider_vertical"></li>
+        <li><a href="@Url.Action("Index", "Review")">Review</a></li>
+        <li class="divider_vertical"></li>
+        <li><a href="@Url.Action("Status", "Review")">Status</a></li>
+    </ul>
+}
+
+<h2>Review</h2>
+
+<!-- Pagination -->
+<div class="row">
+    <div class="page_position">
+        <span class="badge">[ @(Model.Page + 1) / @(Model.LastPage + 1) ]</span>
+    </div>
+    <div class="page_controller">
+        @Html.Partial("_PagingPartial")
+    </div>
+</div>
+
+<!-- Card -->
+<div id="review" class="row">
+    @if (Model.ViewCard != null) {
+        var c = Model.ViewCard;
+        <section class="card">
+            @using (Html.BeginForm("Answer", "Review",
+                routeValues: new { id = c.Id }, method: FormMethod.Get,
+                htmlAttributes: new { @class = "form-horizontal" })) {
+
+                <div class="card_left">
+                    @if (Model.ReviewMode == "Fast") {
+                        <div class="question">
+                            <div class="display_label">Question</div>
+                            <div class="display_field">@c.Question</div>
+                        </div>
+
+                        <div class="answer">
+                            <div class="display_label">Answer</div>
+                            <div class="display_field"><span>?</span></div>
+                        </div>
+                    } else if (Model.ReviewMode == "Typing") {
+                        <div class="answer">
+                            <div class="display_label">Question</div>
+                            <div class="display_field">@c.Answer</div>
+                        </div>
+
+                        <div class="my_answer">
+                            <div class="display_label">Answer</div>
+                            <div class="display_field">
+                                @Html.TextBox("MyAnswer", null, new {
+                                    @id = "tbMyAnswer", @class = "form-control editor_field"})
+                            </div>
+                        </div>
+                    } else if (Model.ReviewMode == "Blank") {
+                        <div class="answer">
+                            <div class="display_label">Question</div>
+                            <div class="display_field">@c.Answer</div>
+                            <div class="display_field">@Model.Blank</div>
+                        </div>
+
+                        <div class="my_answer">
+                            <div class="display_label">Answer</div>
+                            <div class="display_field">
+                                @Html.TextBox("myAnswer", null, new {
+                               @id = "tbMyAnswer", @class = "form-control char_field"
+                           })
+                                <span id="msgError" class="message_error"></span>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="card_right">
+                    @Html.Hidden("Page", Model.Page)
+                    @Html.Hidden("ItemsPerPage", Model.ItemsPerPage)
+                    @Html.Hidden("PageSkip", Model.PageSkip)
+                    @Html.Hidden("LastPage", Model.LastPage)
+                    @Html.Hidden("ItemNum", Model.ItemNum)
+                    @Html.Hidden("ReviewMode", Model.ReviewMode)
+                    @Html.Hidden("QuestionedAt", Model.QuestionedAt)
+                    @Html.Hidden("Blank", Model.Blank)
+                    @Html.Hidden("BlankAnswer", Model.BlankAnswer)
+
+                    <div class="form-group">
+                        <button type="submit" id="sbmAnswer" class="btn btn-primary">
+                            Answer
+                        </button>
+                    </div>
+                </div>
+            }
+
+            <div class="card_left clear-both">
+                @if (Model.ReviewMode == "Typing" || Model.ReviewMode == "Blank") {
+                    <div class="hint">
+                        <div class="display_field">
+                            <button type="button" id="btnHint" class="btn btn-info btn-sm">
+                                Hint
+                            </button>
+                        </div>
+                        <div id="txtHint" class="display_field">@Model.Hint</div>
+                    </div>
+                }
+            </div>
+
+            <div class="card_right">
+                <div class="created_at">
+                    <div class="display_label">Created at</div>
+                    <div class="display_field">
+                        @c.CreatedAt.ToString("yyyy/MM/dd HH:mm")
+                    </div>
+                </div>
+
+                <div class="reviewed_at">
+                    <div class="display_label">Reviewed at</div>
+                    <div class="display_field">
+                        @c.ReviewedAt.ToString("yyyy/MM/dd HH:mm")
+                    </div>
+                </div>
+
+                <div class="review_level">
+                    <div class="display_label">Review Level</div>
+                    <div class="display_field">
+                        <img src="~/Images/rev@(c.ReviewLevel).png" alt="review icon" class="review_icon" />
+                        <span class="badge">@(c.ReviewLevel + 1)</span>
+                    </div>
+                </div>
+
+                <div class="review_mode">
+                    <div class="display_label">Review Mode</div>
+                    @using (Html.BeginForm("Index", "Review", FormMethod.Get)) {
+                        @Html.Hidden("page", Model.Page)
+
+                        @Html.DropDownList("reviewMode", (IEnumerable<SelectListItem>)ViewBag.ReviewModeList,
+                            new { @class = "form-control", @onchange = "submit(this.form)" })
+                    }
+                </div>
+            </div> <!-- div class="card_right" -->
+        </section>
+    } else {
+        <p>No item was found.</p>
+    }
+</div> <!-- div class="row" -->
+
+<div class="back_to">
+    &nbsp;
+</div>
+
+@section scripts {
+    @switch (Model.ReviewMode) {
+        case "Fast":
+            <script type="text/javascript">
+                $(function () {
+                    $("#sbmAnswer").focus();
+                });
+            </script>
+            break;
+        case "Blank":
+        case "Typing":
+        <script type="text/javascript">
+            $(function () {
+                $("#tbMyAnswer").focus();
+
+                var show = function () {
+                    $("#txtHint").css("display", "block");
+                };
+
+                $("#btnHint").click(show);
+
+                $("#btnHint").keydown(function (e) {
+                    var keyCodeEnter = 13;
+                    if (e.keyCode === keyCodeEnter) {
+                        show();
+                        return false;
+                    }
+                    return false;
+                });
+
+                var mode = "@Html.Raw(Model.ReviewMode)";
+                if (mode == "Blank") {
+                    $("#tbMyAnswer").keyup(function () {
+                        if ($("#tbMyAnswer").val().length > 1) {
+                            $("#msgError").text("The blank is just one character.");
+                            $("#sbmAnswer").on("click", disableEvent);
+                            return false;
+                        } else {
+                            $("#msgError").text("");
+                            $("#sbmAnswer").off("click", disableEvent);
+                            return true;
+                        }
+                    });
+
+                    function disableEvent(e) {
+                        e.preventDefault();
+                    }
+                }
+            });
+        </script>
+            break;
+    }
+}

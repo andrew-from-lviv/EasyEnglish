@@ -1,0 +1,26 @@
+﻿@model EasyEnglish.Models.LocalPasswordModel
+@{
+    ViewBag.Title = "Manage Account";
+}
+
+<h1>@ViewBag.Title.</h1>
+
+<p class="message_success">
+    @ViewBag.StatusMessage
+</p>
+
+<p class="login_user">
+    You're logged in as <strong>@User.Identity.Name</strong>.
+</p>
+
+@if (ViewBag.HasLocalPassword) {
+    @Html.Partial("_ChangePasswordPartial")
+}
+
+<div class="back_to">
+    @Html.ActionLink("Back", "Index", "Home")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

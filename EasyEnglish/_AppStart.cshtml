@@ -1,0 +1,6 @@
+﻿@{
+    if (!WebSecurity.Initialized) {
+        WebSecurity.InitializeDatabaseConnection("ViConnection", "UserProfile", "UserId",
+            "UserName", autoCreateTables: true);
+    }
+}
