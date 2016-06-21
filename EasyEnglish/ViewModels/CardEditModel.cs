@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using EasyEnglish.Models;
 using EasyEnglish.Validations;
+using System.ComponentModel;
 
 namespace EasyEnglish.ViewModels {
     public class CardEditModel {
@@ -15,10 +16,12 @@ namespace EasyEnglish.ViewModels {
         [Required]
         [StringLength(maximumLength: 256)]
         [Unique("Question", userEach: true, editMode: true, ErrorMessage = "The question already exists.")]
+        [DisplayName("Word or phrase")]
         public string Question { get; set; }
 
         [Required]
         [StringLength(maximumLength: 256)]
+        [DisplayName("Translation or explanation")]
         public string Answer { get; set; }
 
         [StringLength(maximumLength: 512)]

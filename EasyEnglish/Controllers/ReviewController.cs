@@ -52,7 +52,7 @@ namespace EasyEnglish.Controllers {
 
             foreach (var w in words) {
                 var hintAry = new char[w.Length];
-                var blankAry = Regex.Replace(w, "[a-zA-Z]", "*").ToCharArray();
+                var blankAry = Regex.Replace(w, "[A-Z,a-z,wа-я]", "*").ToCharArray();
                 Array.Copy(sourceArray: blankAry, destinationArray: hintAry, length: blankAry.Length);
                 hintAry[0] = w[0];
                 hintAry[w.Length - 1] = w[w.Length - 1];
